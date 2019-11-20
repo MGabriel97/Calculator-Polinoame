@@ -1,0 +1,65 @@
+https://www.javatpoint.com/angular-spring-crud-example
+
+Person
+ @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
+
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
+
+    @Column(name = "email", nullable = false, unique=true, length = 200)
+    private String email;
+
+    
+    private String iban;
+
+    @Column(name = "address")
+    private String address;
+
+    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
+    private List<Item> items;
+
+@Entity
+@Table(name = "item")
+public class Item {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
+
+    @Column(name = "name", length = 100, unique=true, nullable = false)
+    private String name;
+
+    @ManyToOne()
+    @JoinColumn(name = "person_id",  nullable = false)
+    private Person person;
+
+
+
+@Column(name = "name", length = 100, unique=true, nullable = false)
+	protected String name;
+	
+	@Column(name = "birthdate")
+    protected String birthdate;
+    
+	@Column(name = "gender")
+    protected String gender;
+    
+	@Column(name = "address")
+    protected String address;
+    
+	@Column(name = "medicaldecord")
+    protected String medicaldecord;
+
+
+protected Integer id;
+	
+	protected String name;
+    protected String birthdate;
+    
+
+    protected String gender;
+    protected String address;
+    protected String medicaldecord;
